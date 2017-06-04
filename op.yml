@@ -1,0 +1,26 @@
+name: azure.servicebus.topic.create
+description: creates an azure resource group (if it doesn't already exist)
+inputs:
+  connectionString:
+    string:
+      constraints: { minLength: 1 }
+      description: connection string of servicebus
+      isSecret: true
+  maxSizeInMb:
+    number:
+      constraints: { format: integer, minimum: 1 }
+      description: maximum topic size in megabytes
+      default: 1024
+run:
+  container:
+    image: { ref: 'opspecpkgs/azure.servicebus.topic.create:1.0.0' }
+    cmd:
+      - sh
+      - -ce
+      - |
+        npm link azure
+        node index.js
+    files: { /index.js }
+    envVars:
+      connectionString: $(connectionString)
+      maxSizeInMb: $(maxSizeInMb)
