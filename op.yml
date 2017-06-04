@@ -1,5 +1,5 @@
 name: azure.servicebus.topic.create
-description: creates an azure resource group (if it doesn't already exist)
+description: creates an azure servicebus topic (if it doesn't already exist)
 inputs:
   connectionString:
     string:
