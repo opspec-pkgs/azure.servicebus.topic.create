@@ -1,5 +1,5 @@
 # problem statement
-creates an azure resource group (if it doesn't already exist)
+creates an azure servicebus topic (if it doesn't already exist)
 
 # example usage
 
