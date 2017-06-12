@@ -23,5 +23,18 @@ opctl run github.com/opspec-pkgs/azure.servicebus.topic.create#VERSION
 run:
   op:
     pkg: { ref: github.com/opspec-pkgs/azure.servicebus.topic.create#VERSION }
-    inputs: { connectionString, maxSizeInMb }
+    inputs: 
+      connectionString:
+      name:
+      maxSizeInMb:
+      defaultMsgTtl:
+      enableDuplicateDetection:
+      duplicateDetectionWindow:
+      maxSubscriptions:
+      maxSqlFilters:
+      maxCorrelationFilters:
+      enableDeadLetteringOnMsgExp:
+      enableDeadLetteringOnFilterEvalException:
+      enableOrdering:
+      enablePartitioning:
 ```

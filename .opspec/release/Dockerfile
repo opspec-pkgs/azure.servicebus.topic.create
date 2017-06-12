@@ -1,3 +1,3 @@
-FROM node:8.0.0
+FROM node:8.1.0-alpine
 
-RUN npm install -g azure
+RUN npm install -g azure-sb

@@ -6,11 +6,65 @@ inputs:
       constraints: { minLength: 1 }
       description: connection string of servicebus
       isSecret: true
+  name:
+    string:
+      constraints: { minLength: 1 }
   maxSizeInMb:
     number:
       constraints: { format: integer, minimum: 1 }
       description: maximum topic size in megabytes
       default: 1024
+  defaultMsgTtl:
+    string:
+      constraints: { minLength: 1 }
+      description: default msg TTL (as iso 8601 duration) for the provisioned topic specified as an iso 8601 duration
+      default: PT336H
+  enableDuplicateDetection:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether duplicate detection will be enabled for the provisioned topic
+      default: 'false'
+  duplicateDetectionWindow:
+    string:
+      constraints: { minLength: 1 }
+      description: duration (as iso 8601 duration) of duplicate detection history for the provisioned topic
+      default: PT10M
+  maxSubscriptions:
+    number:
+      constraints: { minimum: 0, format: integer }
+      description: number of subscritions allowed for the provisioned topic
+      default: 2000
+  maxSqlFilters:
+    number:
+      constraints: { minimum: 0, format: integer }
+      description: number of SQL filters allowed for the provisioned topic
+      default: 1000
+  maxCorrelationFilters:
+    number:
+      constraints: { minimum: 0, format: integer }
+      description: number of correlation filters allowed for the provisioned topic
+      default: 2000
+  enableDeadLetteringOnMsgExp:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether dead lettering on msg expiration will be enabled for the provisioned topic
+      default: 'true'
+  enableDeadLetteringOnFilterEvalException:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether dead lettering on filter evaluation exceptions will be enabled for the provisioned topic
+      default: 'true'
+  enableOrdering:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether ordering will be enabled for the provisioned topic
+      default: 'false'
+  enablePartitioning:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether partitioning will be enabled for the provisioned topic
+      default: 'true'
+version: 1.0.0
 run:
   container:
     image: { ref: 'opspecpkgs/azure.servicebus.topic.create:1.0.0' }
@@ -18,9 +72,20 @@ run:
       - sh
       - -ce
       - |
-        npm link azure
+        npm link azure-sb
         node index.js
     files: { /index.js }
     envVars:
-      connectionString: $(connectionString)
-      maxSizeInMb: $(maxSizeInMb)
+      connectionString:
+      name:
+      maxSizeInMb:
+      defaultMsgTtl:
+      enableDuplicateDetection:
+      duplicateDetectionWindow:
+      maxSubscriptions:
+      maxSqlFilters:
+      maxCorrelationFilters:
+      enableDeadLetteringOnMsgExp:
+      enableDeadLetteringOnFilterEvalException:
+      enableOrdering:
+      enablePartitioning:
