@@ -1,91 +1,130 @@
 name: azure.servicebus.topic.create
 description: creates an azure servicebus topic (if it doesn't already exist)
 inputs:
-  connectionString:
+  subscriptionId:
     string:
       constraints: { minLength: 1 }
-      description: connection string of servicebus
+      description: id of azure subscription
+  location:
+    string:
+      constraints: { minLength: 1 }
+      description: location for the provisioned topic
+      default: westus
+  loginId:
+    string:
+      constraints: { minLength: 1 }
+      description: id of user, service principal, or app to login with
+  loginSecret:
+    string:
+      constraints: { minLength: 1 }
+      description: secret of user, service principal, or app to login with
       isSecret: true
+  loginTenantId:
+    string:
+      constraints: { minLength: 1 }
+      description: tenant id of user, service principal, or app to login with
   name:
     string:
       constraints: { minLength: 1 }
-  maxSizeInMb:
-    number:
-      constraints: { format: integer, minimum: 1 }
-      description: maximum topic size in megabytes
-      default: 1024
-  defaultMsgTtl:
+      description: name for the provisioned topic
+  namespace:
     string:
       constraints: { minLength: 1 }
-      description: default msg TTL (as iso 8601 duration) for the provisioned topic specified as an iso 8601 duration
-      default: PT336H
-  enableDuplicateDetection:
-    string:
-      constraints: { enum: ['true', 'false']}
-      description: whether duplicate detection will be enabled for the provisioned topic
-      default: 'false'
-  duplicateDetectionWindow:
+      description: namespace of the provisioned topic
+  resourceGroup:
     string:
       constraints: { minLength: 1 }
-      description: duration (as iso 8601 duration) of duplicate detection history for the provisioned topic
-      default: PT10M
-  maxSubscriptions:
-    number:
-      constraints: { minimum: 0, format: integer }
-      description: number of subscritions allowed for the provisioned topic
-      default: 2000
-  maxSqlFilters:
-    number:
-      constraints: { minimum: 0, format: integer }
-      description: number of SQL filters allowed for the provisioned topic
-      default: 1000
-  maxCorrelationFilters:
-    number:
-      constraints: { minimum: 0, format: integer }
-      description: number of correlation filters allowed for the provisioned topic
-      default: 2000
-  enableDeadLetteringOnMsgExp:
+      description: resource group for the provisioned servicebus
+  autoDeleteOnIdle:
+    string:
+      constraints: { minLength: 1 }
+      description: idle duration after which to delete the provisioned topic
+      default: 10675199.02:48:05.4775807
+  defaultMessageTimeToLive:
+    string:
+      constraints: { minLength: 1 }
+      description: default msg TTL for the provisioned topic specified as an iso 8601 duration
+      default: 14.00:00:00
+  duplicateDetectionHistoryTimeWindow:
+    string:
+      constraints: { minLength: 1 }
+      description: duration of duplicate detection history for the provisioned topic
+      default: 00:00:30
+  enableBatchedOperations:
     string:
       constraints: { enum: ['true', 'false']}
-      description: whether dead lettering on msg expiration will be enabled for the provisioned topic
+      description: whether batched operations will be enabled for the provisioned topic
       default: 'true'
-  enableDeadLetteringOnFilterEvalException:
+  enableExpress:
     string:
       constraints: { enum: ['true', 'false']}
-      description: whether dead lettering on filter evaluation exceptions will be enabled for the provisioned topic
-      default: 'true'
-  enableOrdering:
-    string:
-      constraints: { enum: ['true', 'false']}
-      description: whether ordering will be enabled for the provisioned topic
+      description: whether express entities will be enabled for the provisioned topic
       default: 'false'
   enablePartitioning:
     string:
       constraints: { enum: ['true', 'false']}
       description: whether partitioning will be enabled for the provisioned topic
       default: 'true'
-version: 1.0.0
+  enableSubscriptionPartitioning:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether subscription partitioning will be enabled for the provisioned topic
+      default: 'false'
+  filteringMessagesBeforePublishing:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether pre-publish message filtering will be enabled for the provisioned topic
+      default: 'false'
+  isAnonymousAccessible:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether anonymous access will be enabled for the provisioned topic
+      default: 'false'
+  loginType:
+    string:
+      constraints: { enum: [user, sp]}
+      description: type of login; 'user' (default) or 'sp' for service principal
+      default: user
+  maxSizeInMegabytes:
+    number:
+      constraints: { enum: [1024, 2048, 3072, 4096, 5120] }
+      description: maximum topic size in megabytes
+      default: 1024
+  requiresDuplicateDetection:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether duplicate detection will be enabled for the provisioned topic
+      default: 'false'
+  supportOrdering:
+    string:
+      constraints: { enum: ['true', 'false']}
+      description: whether ordering will be enabled for the provisioned topic
+      default: 'false'
+version: 2.0.0
 run:
   container:
-    image: { ref: 'opspecpkgs/azure.servicebus.topic.create:1.0.0' }
-    cmd:
-      - sh
-      - -ce
-      - |
-        npm link azure-sb
-        node index.js
+    image: { ref: 'opspecpkgs/azure.servicebus.topic.create:2.0.0' }
+    cmd: [node, /index.js]
     files: { /index.js }
     envVars:
-      connectionString:
+      subscriptionId:
+      location:
+      loginId:
+      loginSecret:
+      loginTenantId:
       name:
-      maxSizeInMb:
-      defaultMsgTtl:
-      enableDuplicateDetection:
-      duplicateDetectionWindow:
-      maxSubscriptions:
-      maxSqlFilters:
-      maxCorrelationFilters:
-      enableDeadLetteringOnMsgExp:
-      enableDeadLetteringOnFilterEvalException:
-      enableOrdering:
+      namespace:
+      resourceGroup:
+      autoDeleteOnIdle:
+      defaultMessageTimeToLive:
+      duplicateDetectionHistoryTimeWindow:
+      enableBatchedOperations:
+      enableExpress:
       enablePartitioning:
+      enableSubscriptionPartitioning:
+      filteringMessagesBeforePublishing:
+      isAnonymousAccessible:
+      loginType:
+      maxSizeInMegabytes:
+      requiresDuplicateDetection:
+      supportOrdering:

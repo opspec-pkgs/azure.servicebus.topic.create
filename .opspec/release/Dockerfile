@@ -1,3 +1,3 @@
 FROM node:8.1.0-alpine
 
-RUN npm install -g azure-sb
+RUN npm install ms-rest-azure azure-arm-sb

@@ -24,17 +24,27 @@ run:
   op:
     pkg: { ref: github.com/opspec-pkgs/azure.servicebus.topic.create#VERSION }
     inputs: 
-      connectionString:
+      subscriptionId:
+      location:
+      loginId:
+      loginSecret:
+      loginTenantId:
       name:
-      maxSizeInMb:
-      defaultMsgTtl:
-      enableDuplicateDetection:
-      duplicateDetectionWindow:
-      maxSubscriptions:
-      maxSqlFilters:
-      maxCorrelationFilters:
-      enableDeadLetteringOnMsgExp:
-      enableDeadLetteringOnFilterEvalException:
-      enableOrdering:
+      namespace:
+      resourceGroup:
+      # begin optional args
+      autoDeleteOnIdle:
+      defaultMessageTimeToLive:
+      duplicateDetectionHistoryTimeWindow:
+      enableBatchedOperations:
+      enableExpress:
       enablePartitioning:
+      enableSubscriptionPartitioning:
+      filteringMessagesBeforePublishing:
+      isAnonymousAccessible:
+      loginType:
+      maxSizeInMegabytes:
+      requiresDuplicateDetection:
+      supportOrdering:
+      # end optional args
 ```
