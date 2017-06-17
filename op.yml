@@ -43,7 +43,7 @@ inputs:
   defaultMessageTimeToLive:
     string:
       constraints: { minLength: 1 }
-      description: default msg TTL for the provisioned topic specified as an iso 8601 duration
+      description: default msg TTL for the provisioned topic
       default: 14.00:00:00
   duplicateDetectionHistoryTimeWindow:
     string:
