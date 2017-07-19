@@ -20,33 +20,32 @@ opctl run github.com/opspec-pkgs/azure.servicebus.topic.create#VERSION
 ## compose
 
 ```yaml
-run:
-  op:
-    pkg: { ref: github.com/opspec-pkgs/azure.servicebus.topic.create#VERSION }
-    inputs: 
-      subscriptionId:
-      location:
-      loginId:
-      loginSecret:
-      loginTenantId:
-      name:
-      namespace:
-      resourceGroup:
-      # begin optional args
-      autoDeleteOnIdle:
-      defaultMessageTimeToLive:
-      duplicateDetectionHistoryTimeWindow:
-      enableBatchedOperations:
-      enableExpress:
-      enablePartitioning:
-      enableSubscriptionPartitioning:
-      filteringMessagesBeforePublishing:
-      isAnonymousAccessible:
-      loginType:
-      maxSizeInMegabytes:
-      requiresDuplicateDetection:
-      supportOrdering:
-      # end optional args
+op:
+  pkg: { ref: github.com/opspec-pkgs/azure.servicebus.topic.create#VERSION }
+  inputs: 
+    subscriptionId:
+    location:
+    loginId:
+    loginSecret:
+    loginTenantId:
+    name:
+    namespace:
+    resourceGroup:
+    # begin optional args
+    autoDeleteOnIdle:
+    defaultMessageTimeToLive:
+    duplicateDetectionHistoryTimeWindow:
+    enableBatchedOperations:
+    enableExpress:
+    enablePartitioning:
+    enableSubscriptionPartitioning:
+    filteringMessagesBeforePublishing:
+    isAnonymousAccessible:
+    loginType:
+    maxSizeInMegabytes:
+    requiresDuplicateDetection:
+    supportOrdering:
+    # end optional args
 ```
 
 # Support
