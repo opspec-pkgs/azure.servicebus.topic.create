@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.orgicebus.topic.create.svg?branch=master)](https://travis-ci.orgicebus.topic.create)
 
+<img src="icon.svg" alt="icon" height="100px">
 
 # Problem statement
 
@@ -29,14 +30,15 @@ opctl run azure.servicebus.topic.create#2.0.0
 op:
   pkg: { ref: azure.servicebus.topic.create#2.0.0 }
   inputs:
+    subscriptionId:
     loginId:
     loginSecret:
     loginTenantId:
     name:
     namespace:
     resourceGroup:
-    subscriptionId:
     # params w/ default
+    location:
     autoDeleteOnIdle:
     defaultMessageTimeToLive:
     duplicateDetectionHistoryTimeWindow:
@@ -46,7 +48,6 @@ op:
     enableSubscriptionPartitioning:
     filteringMessagesBeforePublishing:
     isAnonymousAccessible:
-    location:
     loginType:
     maxSizeInMegabytes:
     requiresDuplicateDetection:
