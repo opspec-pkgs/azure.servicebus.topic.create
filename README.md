@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.orgicebus.topic.create.svg?branch=master)](https://travis-ci.orgicebus.topic.create)
+[![Build Status](https://travis-ci.org/opspec-pkgs/azure.servicebus.topic.create.svg?branch=master)](https://travis-ci.org/opspec-pkgs/azure.servicebus.topic.create)
 
 <img src="icon.svg" alt="icon" height="100px">
 
@@ -15,20 +15,20 @@ this version of the pkg is in [![opspec 0.1.5](https://img.shields.io/badge/opsp
 ## Install
 
 ```shell
-opctl pkg install azure.servicebus.topic.create#2.0.0
+opctl pkg install github.com/opspec-pkgs/azure.servicebus.topic.create#2.0.0
 ```
 
 ## Run
 
 ```
-opctl run azure.servicebus.topic.create#2.0.0
+opctl run github.com/opspec-pkgs/azure.servicebus.topic.create#2.0.0
 ```
 
 ## Compose
 
 ```yaml
 op:
-  pkg: { ref: azure.servicebus.topic.create#2.0.0 }
+  pkg: { ref: github.com/opspec-pkgs/azure.servicebus.topic.create#2.0.0 }
   inputs:
     subscriptionId:
     loginId:
@@ -59,7 +59,7 @@ op:
 join us on
 [![Slack](https://opspec-slackin.herokuapp.com/badge.svg)](https://opspec-slackin.herokuapp.com/)
 or
-[open an issue](https://azure.servicebus.topic.create/issues)
+[open an issue](https://github.com/opspec-pkgs/azure.servicebus.topic.create/issues)
 
 # Releases
 

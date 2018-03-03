@@ -1,4 +1,4 @@
-name: azure.servicebus.topic.create
+name: github.com/opspec-pkgs/azure.servicebus.topic.create
 description: creates an azure servicebus topic (if it doesn't already exist)
 inputs:
   subscriptionId:
